@@ -5,6 +5,7 @@
  */
 package calculatordemo;
 
+import java.util.EmptyStackException;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -17,7 +18,7 @@ public class Arithmetic {
     private static final char[] OPSET = {
         '+', '-', '*', '/', '(', ')', '#'};
     private static final char[][] PRIOR = {
-//        +    -    *    /    (    )    #
+        //        +    -    *    /    (    )    #
         {'>', '>', '<', '<', '<', '>', '>'},// +
         {'>', '>', '<', '<', '<', '>', '>'},// -
         {'>', '>', '>', '>', '<', '>', '>'},// *
@@ -50,12 +51,16 @@ public class Arithmetic {
             if (isSymbol(temp.charAt(0))) {
                 symbol.push(temp.charAt(0));
             }
-            if (temp.charAt(0) == ')' || precede(OPSET[returnOpOrd(temp.charAt(0))], symbol.peek()) != '>') {
-                while (symbol.peek() != '(') {
-                    result += symbol.pop().toString();
-                    result += " ";
+            try {
+                if (temp.charAt(0) == ')' || precede(OPSET[returnOpOrd(temp.charAt(0))], symbol.peek()) != '>') {
+                    while (symbol.peek() != '(') {
+                        result += symbol.pop().toString();
+                        result += " ";
+                    }
+                    symbol.pop();
                 }
-                symbol.pop();
+            } catch (EmptyStackException ex) {
+                System.err.println("ERROR");
             }
         }
         while (!symbol.empty()) {
