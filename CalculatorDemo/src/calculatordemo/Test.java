@@ -45,12 +45,12 @@ public class Test {
             } else if (cmp.get(symbol.peek()) + cmp.get(temp) == 0) {
                 symbol.pop();
                 temp = input.next();
-            } else if (temp == "+" || temp == "-" || temp == "*" || temp == "/") {
+            } else if (symbol.peek() == "+" || symbol.peek() == "-" || symbol.peek() == "*" || symbol.peek() == "/") {
                 Double b = number.pop();
                 Double a = number.pop();
-                number.push(calculate(a, temp, b));
+                number.push(calculate(a, symbol.pop(), b));
             }
-            System.out.print("1");
+//            System.out.print("1");
         }
         return number.peek();
     }
