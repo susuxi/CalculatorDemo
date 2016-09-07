@@ -14,6 +14,8 @@ public class Config {
     public static final double BUTTON_WIDTH = 75;
     public static final double BUTTON_HEIGHT = 50;
 
+    public static final String END = " #";
+    
     public static final String PLUS = " + ";
     public static final String SUBSTRAC = " - ";
     public static final String MULTIPLY = " * ";
@@ -26,6 +28,7 @@ public class Config {
     public static final String TAN = " tan( ";
     
     public static final String ABS = " abs( ";
+    public static final String LN = " ln( ";
     
     public static final String PI = " ¦Ð ";
     

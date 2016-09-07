@@ -173,7 +173,7 @@ public class CalculatorDemo extends Application {
             expression.setText(expression.getText() + '.');
         });
         btEquals.setOnAction(e -> {
-            answer.setText(calculatorOperation.getAnswer(expression.getText()));
+            answer.setText(calculatorOperation.getAnswer(expression.getText() + Config.END));
         });
 
         btPrevious.setOnAction(e -> {
@@ -220,7 +220,7 @@ public class CalculatorDemo extends Application {
                     expression.setText(expression.getText() + Config.DIVIDE);
                     break;
                 case "=":
-                    answer.setText(calculatorOperation.getAnswer(expression.getText()));
+                    answer.setText(calculatorOperation.getAnswer(expression.getText() + Config.END));
                     break;
 
                 case "(":
@@ -353,7 +353,8 @@ public class CalculatorDemo extends Application {
         });
         btLn.setOnAction(e -> {
             clearNext();
-
+            recordPreviousAction();
+            expression.setText(expression.getText() + Config.LN);
         });
         btRadical.setOnAction(e -> {
             clearNext();
